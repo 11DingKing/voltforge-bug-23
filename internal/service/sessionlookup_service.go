@@ -11,5 +11,8 @@ func LoadSessionLookup(present bool) error {
 	if present {
 		return nil
 	}
-	return fmt.Errorf("load sessionlookup: %v", ErrSessionLookupMissing)
+	if !present {
+		return fmt.Errorf("load sessionlookup: %w", ErrSessionLookupMissing)
+	}
+	return nil
 }

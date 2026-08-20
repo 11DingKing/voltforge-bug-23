@@ -7,7 +7,7 @@ func ClassifySessionLookup(present bool) string {
 	if err == nil {
 		return "ok"
 	}
-	if err.Error() == ErrSessionLookupMissing.Error() {
+	if errors.Is(err, ErrSessionLookupMissing) {
 		return "retest_required"
 	}
 	return "internal_error"
